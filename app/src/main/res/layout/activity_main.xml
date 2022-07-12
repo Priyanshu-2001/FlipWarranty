@@ -7,7 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E8121010"
+        android:background="@color/appBG"
         android:fitsSystemWindows="true">
 
         <androidx.appcompat.widget.Toolbar
@@ -35,13 +35,17 @@
         </androidx.appcompat.widget.Toolbar>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/scanQRbtn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="50dp"
+            android:textSize="20sp"
             android:background="@drawable/premium_btn"
             android:text="@string/scan_qr"
             android:textColor="@color/white"
+            android:elevation="40dp"
+            android:shadowRadius="25"
+            android:shadowColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/guideline2"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,13 +77,13 @@
             android:minHeight="38dp"
             android:textColorHint="#C1BEBE"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/searchWithSerialNumber"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/searchWithSerialNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -87,6 +91,8 @@
             android:focusable="true"
             android:foregroundGravity="right"
             android:text="@string/search"
+            android:shadowRadius="25"
+            android:shadowColor="@color/white"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/serialEditText"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
