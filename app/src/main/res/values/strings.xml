@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FlipWarranty</string>
+    <string name="search">Search</string>
+    <string name="enter_serial_number">Enter Serial Number</string>
+    <string name="cryptic_warranty">CRYPTIC WARRANTY</string>
+    <string name="scan_qr">SCAN QR</string>
+    <string name="or">OR</string>
+</resources>
