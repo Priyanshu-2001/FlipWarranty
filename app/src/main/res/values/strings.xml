@@ -5,4 +5,5 @@
     <string name="cryptic_warranty">CRYPTIC WARRANTY</string>
     <string name="scan_qr">SCAN QR</string>
     <string name="or">OR</string>
+    <string name="warranty_details">WARRANTY DETAILS</string>
 </resources>

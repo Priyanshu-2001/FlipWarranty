@@ -9,4 +9,31 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#2F3E46</color>
     <color name="appBG">#E8121010</color>
+
+    <color name="lightBabyPink">#FF7582</color>
+    <color name="lightGreen">#4FE0B6</color>
+    <color name="PinkRed">#CC184E</color>
+    <color name="cream">#FFE3B3</color>
+    <color name="LightBlue">#5983FC</color>
+    <color name="lightPink">#EA80FC</color>
+    <color name="bushGreen">#92DE8B</color>
+    <color name="skyBlue">#88F4FF</color>
+    <color name="lightBrown">#C1B9AE</color>
+    <color name="lightMattBlue">#A5CAD2</color>
+    <color name="MattPink">#BA5082</color>
+
+    <integer-array name="BgColorList">
+        <item>@color/lightBabyPink</item>
+        <item>@color/lightGreen</item>
+        <item>@color/PinkRed</item>
+        <item>@color/cream</item>
+        <item>@color/LightBlue</item>
+        <item>@color/bushGreen</item>
+        <item>@color/skyBlue</item>
+        <item>@color/lightBrown</item>
+        <item>@color/lightMattBlue</item>
+        <item>@color/MattPink</item>
+        <item>@color/lightPink</item>
+    </integer-array>
+
 </resources>
