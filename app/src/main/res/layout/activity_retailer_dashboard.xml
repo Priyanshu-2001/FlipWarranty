@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/appBG"
-        android:fitsSystemWindows="true"
-        tools:context=".customer.WarrantyInfoActivity">
+        android:fitsSystemWindows="true">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,25 +26,46 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/aladin"
-                android:text="@string/warranty_details"
+                android:text="@string/your_listings"
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 tools:layout_editor_absoluteX="115dp"
                 tools:layout_editor_absoluteY="15dp" />
 
+            <ImageButton
+                android:id="@+id/changeProfile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="15dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/change_user_type"
+                android:src="@drawable/ic_outline_supervised_user_circle_24" />
+
         </androidx.appcompat.widget.Toolbar>
 
-        <include
-            android:id="@+id/warrantyCard"
-            layout="@layout/warranty_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="25dp"
+            android:backgroundTint="@color/LightBlue"
+            android:clickable="true"
+            android:contentDescription="@string/add_new_product"
+            android:focusable="true"
+            android:foreground="@drawable/ic_baseline_add_24"
+            android:translationX="100dp"
+            android:translationY="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:rippleColor="@color/lightBabyPink" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

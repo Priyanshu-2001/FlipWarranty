@@ -4,11 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/FlipWarranty/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.159" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/drawable/circle_explosion.xml" value="0.168" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/drawable/edit_text_background.xml" value="0.168" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/drawable/forward_arrow.xml" value="0.168" />
         <entry key="..\:/FlipWarranty/app/src/main/res/drawable/home_icon.xml" value="0.1555" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.168" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/drawable/ic_baseline_add_photo_alternate_24.xml" value="0.232" />
         <entry key="..\:/FlipWarranty/app/src/main/res/drawable/premium_btn.xml" value="0.1555" />
         <entry key="..\:/FlipWarranty/app/src/main/res/drawable/qr_scan_icon.xml" value="0.1595" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/drawable/white_back_button.xml" value="0.168" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/layout-v26/activity_customer_dashboard.xml" value="0.2" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/layout/activity_customer_dashboard.xml" value="0.2" />
         <entry key="..\:/FlipWarranty/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/layout/activity_retailer_dashboard.xml" value="0.176" />
         <entry key="..\:/FlipWarranty/app/src/main/res/layout/activity_warranty_info.xml" value="0.25" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/layout/add_new_product_bottomsheet.xml" value="0.6" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/layout/fragment_purchase.xml" value="0.25" />
+        <entry key="..\:/FlipWarranty/app/src/main/res/layout/get_warranty.xml" value="0.25" />
         <entry key="..\:/FlipWarranty/app/src/main/res/layout/warranty_card.xml" value="0.264" />
         <entry key="..\:/FlipWarranty/app/src/main/res/menu/drawer.xml" value="0.25" />
         <entry key="..\:/FlipWarranty/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1555" />

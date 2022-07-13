@@ -6,4 +6,19 @@
     <string name="scan_qr">SCAN QR</string>
     <string name="or">OR</string>
     <string name="warranty_details">WARRANTY DETAILS</string>
+    <string name="add_new_product">Add New Product</string>
+    <string name="your_listings">Your Listings</string>
+    <string name="change_user_type">Change User Type</string>
+    <string name="add_product_details">ADD PRODUCT DETAILS</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_description">Product Description</string>
+    <string name="email">Email</string>
+    <string name="close_product_addition">Close Product Addition</string>
+    <string name="add_product">ADD PRODUCT</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="price">Price</string>
+    <string name="Buy_now">Buy Now</string>
+    <string name="purchaseHistory">Purchase History</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

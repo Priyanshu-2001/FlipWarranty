@@ -1,0 +1,13 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_focused="true">
+        <shape android:innerRadius="25dp" android:shape="rectangle">
+            <stroke android:width="25dp" android:color="@color/lightBabyPink" />
+            <gradient android:centerColor="@color/bushGreen" android:endColor="@color/appBG" />
+        </shape>
+    </item>
+    <item android:state_enabled="true">
+        <shape android:padding="10dp" android:shape="rectangle">
+            <corners android:bottomLeftRadius="15dp" android:bottomRightRadius="15dp" android:topLeftRadius="15dp" android:topRightRadius="15dp" />
+        </shape>
+    </item>
+</selector>

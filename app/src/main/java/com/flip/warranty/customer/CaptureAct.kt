@@ -1,4 +1,4 @@
-package com.flip.warranty
+package com.flip.warranty.customer
 
 import com.journeyapps.barcodescanner.CaptureActivity
 

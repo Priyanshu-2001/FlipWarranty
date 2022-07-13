@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_icon"
+        android:title="HOME"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/WarrantyScanner"
+        android:title="" />
+    <item
         android:id="@+id/profile"
-        android:title="profile"/>
-    <item
-        android:id="@+id/productHistory"
-        android:title="Products History"/>
-    <item
-        android:id="@+id/logOut"
-        android:title="Log Out"/>
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile"
+        app:showAsAction="always" />
 </menu>
