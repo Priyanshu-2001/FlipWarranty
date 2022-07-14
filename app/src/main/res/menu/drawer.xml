@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/purchaseFragment"
         android:icon="@drawable/home_icon"
         android:title="HOME"
         app:showAsAction="always" />
@@ -11,7 +11,7 @@
         android:id="@+id/WarrantyScanner"
         android:title="" />
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"
         app:showAsAction="always" />
