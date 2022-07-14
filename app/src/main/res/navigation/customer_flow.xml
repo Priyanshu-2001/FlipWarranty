@@ -9,10 +9,46 @@
         android:id="@+id/profileFragment"
         android:name="com.flip.warranty.customer.fragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_purchaseFragment"
+            app:popUpTo="@id/purchaseFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_warrantyScannerFragment"
+            app:destination="@id/warrantyScannerFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popUpTo="@id/purchaseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/purchaseFragment"
         android:name="com.flip.warranty.customer.fragments.PurchaseFragment"
         android:label="fragment_purchase"
-        tools:layout="@layout/fragment_purchase" />
+        tools:layout="@layout/fragment_purchase">
+        <action
+            android:id="@+id/action_purchaseFragment_to_warrantyScannerFragment"
+            app:destination="@id/warrantyScannerFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popUpTo="@id/purchaseFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_purchaseFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/purchaseFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/warrantyScannerFragment"
+        android:name="com.flip.warranty.customer.fragments.WarrantyScannerFragment"
+        android:label="fragment_warranty_scanner"
+        tools:layout="@layout/fragment_warranty_scanner">
+        <action
+            android:id="@+id/action_warrantyScannerFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_warrantyScannerFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment"
+            app:popUpTo="@id/purchaseFragment" />
+    </fragment>
 </navigation>

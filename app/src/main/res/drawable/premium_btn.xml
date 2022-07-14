@@ -8,7 +8,7 @@
         android:right="4dp"
         android:top="2dp">
         <shape>
-            <solid android:color="@android:color/darker_gray" />
+            <solid android:color="@color/lightBabyPink" />
             <corners android:radius="20dp" />
             <padding
                 android:bottom="10dp"
@@ -24,7 +24,7 @@
             <gradient
                 android:angle="270"
                 android:endColor="#0D1517"
-                android:startColor="@color/grey" />
+                android:startColor="@color/lightBrown" />
             <corners android:radius="20dp" />
             <padding
                 android:bottom="10dp"

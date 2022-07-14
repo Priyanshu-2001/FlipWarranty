@@ -21,6 +21,7 @@
     <color name="lightBrown">#C1B9AE</color>
     <color name="lightMattBlue">#A5CAD2</color>
     <color name="MattPink">#BA5082</color>
+    <color name="MattPinkDarkBottom">#4A1E32</color>
 
     <integer-array name="BgColorList">
         <item>@color/lightBabyPink</item>

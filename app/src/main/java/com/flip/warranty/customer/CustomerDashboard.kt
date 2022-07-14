@@ -23,34 +23,40 @@ class CustomerDashboard : AppCompatActivity() {
         binding.changeProfile.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
         binding.bottomNavView.background = null
         binding.bottomNavView.menu.getItem(1).isEnabled = false
         val animation = AnimationUtils.loadAnimation(this, R.anim.circle_explotion_anim).apply {
-            duration = 700
+            duration = 600
             interpolator = AccelerateDecelerateInterpolator()
         }
         binding.addBtn.setOnClickListener {
-//            binding.addBtn.isVisible = false
-//            binding.circleCover.isVisible = false
+            binding.title.text = "Warranty Check"
             binding.circleCover.startAnimation(animation) {
                 //display fragment when animation is finished
-                //TODO convert it into fragment
-                startActivity(Intent(this, GetWarranty::class.java))
-//                binding.Root.setBackgroundColor(ContextCompat.getColor(this, R.color.lightBrown))
+                navController.navigate(R.id.warrantyScannerFragment)
                 binding.circleCover.isVisible = false
             }
 
         }
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
+
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.purchaseFragment) {
+                binding.addBtn.isClickable = true
                 binding.title.text = "Buy Now"
-            } else {
+                binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
+            } else if (destination.id == R.id.profileFragment) {
+                binding.addBtn.isClickable = true
                 binding.title.text = "Profile"
+                binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
+            } else {
+                binding.addBtn.isClickable = false
+                binding.bottomNavView.isSelected = false
+                binding.Root.setBackgroundColor(resources.getColor(R.color.MattPinkDarkBottom))
             }
         }
     }
