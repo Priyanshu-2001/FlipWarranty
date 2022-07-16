@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.flip.warranty.customer.CustomerDashboard
+import com.flip.warranty.customer.ui.CustomerDashboard
 import com.flip.warranty.databinding.ActivityMainBinding
-import com.flip.warranty.retailer.RetailerDashboard
+import com.flip.warranty.retailer.ui.RetailerDashboard
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

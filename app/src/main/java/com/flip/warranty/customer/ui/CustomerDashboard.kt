@@ -1,4 +1,4 @@
-package com.flip.warranty.customer
+package com.flip.warranty.customer.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import com.flip.warranty.MainActivity
 import com.flip.warranty.R
+import com.flip.warranty.customer.startAnimation
 import com.flip.warranty.databinding.ActivityCustomerDashboardBinding
 
 class CustomerDashboard : AppCompatActivity() {
@@ -28,7 +29,7 @@ class CustomerDashboard : AppCompatActivity() {
         binding.bottomNavView.background = null
         binding.bottomNavView.menu.getItem(1).isEnabled = false
         val animation = AnimationUtils.loadAnimation(this, R.anim.circle_explotion_anim).apply {
-            duration = 500
+            duration = 300
             interpolator = AccelerateDecelerateInterpolator()
         }
         binding.warrantyCheck.setOnClickListener {

@@ -1,4 +1,4 @@
-package com.flip.warranty.customer.fragments
+package com.flip.warranty.customer.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

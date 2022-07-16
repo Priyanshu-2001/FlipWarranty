@@ -1,4 +1,4 @@
-package com.flip.warranty.retailer
+package com.flip.warranty.retailer.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.flip.warranty.MainActivity
 import com.flip.warranty.R
 import com.flip.warranty.databinding.ActivityRetailerDashboardBinding
+import com.flip.warranty.retailer.ui.bottomSheet.AddNewProductForm
 
 class RetailerDashboard : AppCompatActivity() {
     lateinit var binding: ActivityRetailerDashboardBinding

@@ -1,4 +1,4 @@
-package com.flip.warranty.retailer
+package com.flip.warranty.retailer.ui.bottomSheet
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.flip.warranty.customer.fragments.ProfileFragment"
+        android:name="com.flip.warranty.customer.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/purchaseFragment"
-        android:name="com.flip.warranty.customer.fragments.PurchaseFragment"
+        android:name="com.flip.warranty.customer.ui.fragments.PurchaseFragment"
         android:label="fragment_purchase"
         tools:layout="@layout/fragment_purchase">
         <action
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/warrantyScannerFragment"
-        android:name="com.flip.warranty.customer.fragments.WarrantyScannerFragment"
+        android:name="com.flip.warranty.customer.ui.fragments.WarrantyScannerFragment"
         android:label="fragment_warranty_scanner"
         tools:layout="@layout/fragment_warranty_scanner">
         <action

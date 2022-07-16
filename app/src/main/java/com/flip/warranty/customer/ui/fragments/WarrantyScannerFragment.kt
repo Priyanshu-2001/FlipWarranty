@@ -1,4 +1,4 @@
-package com.flip.warranty.customer.fragments
+package com.flip.warranty.customer.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.flip.warranty.R
-import com.flip.warranty.customer.CaptureAct
 import com.flip.warranty.customer.WarrantyInfoActivity
+import com.flip.warranty.customer.services.CaptureAct
 import com.flip.warranty.databinding.FragmentWarrantyScannerBinding
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
