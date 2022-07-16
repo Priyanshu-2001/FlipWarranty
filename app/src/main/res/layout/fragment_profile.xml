@@ -21,7 +21,7 @@
         android:background="@null"
         android:fontFamily="@font/carter_one"
         android:padding="5dp"
-        android:text="ORDER HISTORY"
+        android:text="@string/order_history"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile" />
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/warranty_bg"
-        android:text="LOG OUT"
+        android:text="@string/log_out"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent" />
 

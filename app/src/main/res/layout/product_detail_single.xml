@@ -4,21 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginHorizontal="15dp"
+    android:layout_marginVertical="10dp"
     android:backgroundTint="@color/grey"
-    android:padding="25dp"
     app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="25dp">
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="15dp">
 
         <ImageView
             android:id="@+id/productImage"
             android:layout_width="75dp"
             android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:elevation="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/waranty_badge"
@@ -28,7 +36,6 @@
             android:id="@+id/ProductName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
             android:text="@string/warranty_details"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,28 +45,35 @@
         <TextView
             android:id="@+id/ProductSummary"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:alpha="0"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:gravity="center"
+            android:padding="5dp"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/productImage"
             app:layout_constraintTop_toBottomOf="@+id/ProductName"
-            tools:text="Rs 1500" />
+            tools:text="Hello Please Buy my App for 1Cr Only" />
 
-        <ProgressBar
-            android:id="@+id/priceProgressBar"
+        <Button
+            android:id="@+id/buyBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/white"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/ProductSummary"
-            app:layout_constraintEnd_toEndOf="@+id/ProductSummary"
-            app:layout_constraintStart_toStartOf="@+id/ProductSummary"
-            app:layout_constraintTop_toTopOf="@+id/ProductSummary" />
+            android:background="@null"
+            android:text="Buy Now"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <Button
+            android:id="@+id/DeleteNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Delete"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

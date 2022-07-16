@@ -12,12 +12,18 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_purchaseFragment"
-            app:popUpTo="@id/purchaseFragment" />
+            app:popUpTo="@id/purchaseFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_profileFragment_to_warrantyScannerFragment"
             app:destination="@id/warrantyScannerFragment"
             app:enterAnim="@android:anim/fade_in"
-            app:popUpTo="@id/purchaseFragment" />
+            app:popUpTo="@id/purchaseFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_profileFragment_to_purchaseFragment2"
+            app:destination="@id/purchaseFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/purchaseFragment"
@@ -29,7 +35,7 @@
             app:destination="@id/warrantyScannerFragment"
             app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/purchaseFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_purchaseFragment_to_profileFragment"
             app:destination="@id/profileFragment"
@@ -49,6 +55,7 @@
         <action
             android:id="@+id/action_warrantyScannerFragment_to_purchaseFragment"
             app:destination="@id/purchaseFragment"
-            app:popUpTo="@id/purchaseFragment" />
+            app:popUpTo="@id/purchaseFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

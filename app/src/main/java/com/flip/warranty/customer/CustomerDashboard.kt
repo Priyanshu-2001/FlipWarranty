@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import com.flip.warranty.MainActivity
 import com.flip.warranty.R
 import com.flip.warranty.databinding.ActivityCustomerDashboardBinding
@@ -29,11 +28,13 @@ class CustomerDashboard : AppCompatActivity() {
         binding.bottomNavView.background = null
         binding.bottomNavView.menu.getItem(1).isEnabled = false
         val animation = AnimationUtils.loadAnimation(this, R.anim.circle_explotion_anim).apply {
-            duration = 600
+            duration = 500
             interpolator = AccelerateDecelerateInterpolator()
         }
-        binding.addBtn.setOnClickListener {
+        binding.warrantyCheck.setOnClickListener {
             binding.title.text = "Warranty Check"
+            binding.warrantyCheck.isClickable = false
+            binding.bottomNavView.menu.getItem(1).isChecked = true
             binding.circleCover.startAnimation(animation) {
                 //display fragment when animation is finished
                 navController.navigate(R.id.warrantyScannerFragment)
@@ -43,20 +44,42 @@ class CustomerDashboard : AppCompatActivity() {
         }
 
 
-        NavigationUI.setupWithNavController(binding.bottomNavView, navController)
+//        NavigationUI.setupWithNavController(binding.bottomNavView, navController)
+        binding.bottomNavView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.purchaseFragment -> {
+                    navController.popBackStack(R.id.purchaseFragment, true)
+                    navController.clearBackStack(R.id.purchaseFragment)
+                    navController.navigate(R.id.purchaseFragment)
+                }
+                R.id.profileFragment -> {
+                    navController.popBackStack(R.id.purchaseFragment, false)
+                    navController.navigate(R.id.profileFragment)
+                }
+            }
+            true
+        }
+        binding.bottomNavView.setOnItemReselectedListener { }
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.purchaseFragment) {
-                binding.addBtn.isClickable = true
-                binding.title.text = "Buy Now"
-                binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
-            } else if (destination.id == R.id.profileFragment) {
-                binding.addBtn.isClickable = true
-                binding.title.text = "Profile"
-                binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
-            } else {
-                binding.addBtn.isClickable = false
-                binding.bottomNavView.isSelected = false
-                binding.Root.setBackgroundColor(resources.getColor(R.color.MattPinkDarkBottom))
+            when (destination.id) {
+                R.id.purchaseFragment -> {
+                    binding.warrantyCheck.isClickable = true
+                    binding.title.text = "Buy Now"
+                    binding.bottomNavView.menu.getItem(0).isChecked = true
+                    binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
+                    println("purchase fragment")
+                }
+                R.id.profileFragment -> {
+                    binding.warrantyCheck.isClickable = true
+                    binding.bottomNavView.menu.getItem(2).isChecked = true
+                    binding.title.text = "Profile"
+                    binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
+                    println("profile fragment")
+                }
+                R.id.warrantyScannerFragment -> {
+                    binding.bottomNavView.menu.getItem(1).isChecked = true
+                    binding.Root.setBackgroundColor(resources.getColor(R.color.MattPinkDarkBottom))
+                }
             }
         }
     }
