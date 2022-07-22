@@ -46,10 +46,10 @@
                     android:layout_height="35dp"
                     android:layout_gravity="end"
                     android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_outline_supervised_user_circle_24"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/change_user_type"
-                    android:src="@drawable/ic_outline_supervised_user_circle_24"
-                    android:tooltipText="Switch Profile" />
+                    android:visibility="gone" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -91,6 +91,7 @@
                 android:id="@+id/bottomNavView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:itemRippleColor="@color/cream"
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 app:menu="@menu/drawer" />

@@ -37,7 +37,8 @@
         android:id="@+id/LogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/warranty_bg"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/premium_btn"
         android:text="@string/log_out"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent" />

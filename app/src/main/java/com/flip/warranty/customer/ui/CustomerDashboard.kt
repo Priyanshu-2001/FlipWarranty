@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
-import com.flip.warranty.MainActivity
+import com.flip.warranty.LoginPage
 import com.flip.warranty.R
 import com.flip.warranty.customer.startAnimation
 import com.flip.warranty.databinding.ActivityCustomerDashboardBinding
@@ -21,7 +21,7 @@ class CustomerDashboard : AppCompatActivity() {
         theme.applyStyle(R.style.bottomAppBar, true)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_customer_dashboard)
         binding.changeProfile.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginPage::class.java))
         }
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -33,7 +33,7 @@ class CustomerDashboard : AppCompatActivity() {
             interpolator = AccelerateDecelerateInterpolator()
         }
         binding.warrantyCheck.setOnClickListener {
-            binding.title.text = "Warranty Check"
+            binding.title.text = getString(R.string.warranty_check)
             binding.warrantyCheck.isClickable = false
             binding.bottomNavView.menu.getItem(1).isChecked = true
             binding.circleCover.startAnimation(animation) {
@@ -44,8 +44,6 @@ class CustomerDashboard : AppCompatActivity() {
 
         }
 
-
-//        NavigationUI.setupWithNavController(binding.bottomNavView, navController)
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.purchaseFragment -> {
@@ -65,21 +63,26 @@ class CustomerDashboard : AppCompatActivity() {
             when (destination.id) {
                 R.id.purchaseFragment -> {
                     binding.warrantyCheck.isClickable = true
-                    binding.title.text = "Buy Now"
+                    binding.title.text = getString(R.string.buy_now)
                     binding.bottomNavView.menu.getItem(0).isChecked = true
-                    binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
+                    binding.Root.setBackgroundColor(resources.getColor(R.color.appBG, theme))
                     println("purchase fragment")
                 }
                 R.id.profileFragment -> {
                     binding.warrantyCheck.isClickable = true
                     binding.bottomNavView.menu.getItem(2).isChecked = true
-                    binding.title.text = "Profile"
-                    binding.Root.setBackgroundColor(resources.getColor(R.color.appBG))
+                    binding.title.text = getString(R.string.profile)
+                    binding.Root.setBackgroundColor(resources.getColor(R.color.appBG, theme))
                     println("profile fragment")
                 }
                 R.id.warrantyScannerFragment -> {
                     binding.bottomNavView.menu.getItem(1).isChecked = true
-                    binding.Root.setBackgroundColor(resources.getColor(R.color.MattPinkDarkBottom))
+                    binding.Root.setBackgroundColor(
+                        resources.getColor(
+                            R.color.MattPinkDarkBottom,
+                            theme
+                        )
+                    )
                 }
             }
         }

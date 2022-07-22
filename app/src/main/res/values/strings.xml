@@ -25,4 +25,13 @@
     <string name="order_history">ORDER HISTORY</string>
     <string name="DevName">Priyanshu Gupta</string>
     <string name="edit">Edit</string>
+    <string name="warranty_check">Warranty Check</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="profile">Profile</string>
+    <string name="welcome">WELCOME</string>
+    <string name="design">design</string>
+    <string name="sign_in_your_account">Sign in Your Account</string>
+    <string name="password">Password</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sample_mail">Priyanshu@gmail.com</string>
 </resources>

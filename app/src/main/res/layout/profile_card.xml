@@ -2,20 +2,21 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:backgroundTint="@color/LightBlue"
-
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/LightBlue"
 
     android:padding="25dp"
     app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/cardView"
-        android:paddingTop="25dp"
         android:paddingStart="25dp"
+        android:paddingTop="25dp"
+        android:paddingEnd="25dp"
         android:paddingBottom="25dp">
 
 
@@ -25,6 +26,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/carter_one"
             android:text="@string/DevName"
+            android:textColor="@color/black"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="PriyanshuGUpta123123@gmail.com"
+            android:text="@string/sample_mail"
+            android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nameTV"
@@ -44,8 +47,9 @@
         <android.widget.Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/black"
             android:background="@null"
+            android:visibility="gone"
             android:text="@string/edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

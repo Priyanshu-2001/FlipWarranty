@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/Root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/Root"
         android:background="@color/appBG">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,8 @@
                     android:layout_marginEnd="15dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/change_user_type"
-                    android:src="@drawable/ic_outline_supervised_user_circle_24" />
+                    android:src="@drawable/ic_outline_supervised_user_circle_24"
+                    android:visibility="gone" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -72,8 +73,8 @@
             android:layout_width="48dp"
             android:layout_height="42dp"
             android:layout_gravity="center|bottom"
-            android:elevation="0dp"
             android:background="@drawable/circle_explosion"
+            android:elevation="0dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -82,9 +83,9 @@
             android:id="@+id/bottomAppbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:fabCradleRoundedCornerRadius="50dp"
             android:layout_gravity="bottom"
-            app:fabCradleMargin="10dp">
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="50dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavView"
@@ -92,6 +93,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
+                app:itemRippleColor="@color/cream"
                 app:menu="@menu/drawer" />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -102,9 +104,9 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/LightBlue"
             android:contentDescription="@string/purchaseHistory"
-            app:srcCompat="@drawable/warranty_certificate"
             app:layout_anchor="@id/bottomAppbar"
-            app:rippleColor="@color/lightBabyPink" />
+            app:rippleColor="@color/lightBabyPink"
+            app:srcCompat="@drawable/warranty_certificate" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

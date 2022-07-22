@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.flip.warranty.MainActivity
+import com.flip.warranty.LoginPage
 import com.flip.warranty.R
 import com.flip.warranty.databinding.ActivityRetailerDashboardBinding
 import com.flip.warranty.retailer.ui.bottomSheet.AddNewProductForm
@@ -17,7 +17,7 @@ class RetailerDashboard : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_retailer_dashboard)
 
         binding.changeProfile.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginPage::class.java))
         }
 
         binding.addBtn.setOnClickListener {
