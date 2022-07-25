@@ -1,6 +1,5 @@
 package com.flip.warranty.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,6 @@ import com.flip.warranty.databinding.ActivityLoginPageBinding
 import com.flip.warranty.login.repository.LoginRepositoryImpl
 import com.flip.warranty.login.utility.LoginCred
 import com.flip.warranty.login.utility.Validation
-import com.flip.warranty.retailer.ui.RetailerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -47,10 +45,5 @@ class LoginPage : AppCompatActivity() {
                 }
             }
         }
-        binding.btnRetailer.setOnClickListener {
-            finishAffinity()
-            startActivity(Intent(this, RetailerDashboard::class.java))
-        }
-
     }
 }
