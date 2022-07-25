@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "234573718689",
+    "project_id": "flipwarranty",
+    "storage_bucket": "flipwarranty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234573718689:android:9094717d5155d186967ce0",
+        "android_client_info": {
+          "package_name": "com.flip.warranty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234573718689-najdk5lagdpl5ro4uv85bs9naa8ouopi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt2UP7_AN1y728-W-DGu7T7f1vM8A4y5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234573718689-najdk5lagdpl5ro4uv85bs9naa8ouopi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

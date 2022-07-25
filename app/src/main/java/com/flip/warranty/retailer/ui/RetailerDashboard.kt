@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.flip.warranty.LoginPage
 import com.flip.warranty.R
 import com.flip.warranty.databinding.ActivityRetailerDashboardBinding
+import com.flip.warranty.login.LoginPage
 import com.flip.warranty.retailer.ui.bottomSheet.AddNewProductForm
 
 class RetailerDashboard : AppCompatActivity() {

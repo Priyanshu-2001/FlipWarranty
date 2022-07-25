@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
-import com.flip.warranty.LoginPage
 import com.flip.warranty.R
 import com.flip.warranty.customer.startAnimation
 import com.flip.warranty.databinding.ActivityCustomerDashboardBinding
+import com.flip.warranty.login.LoginPage
 
 class CustomerDashboard : AppCompatActivity() {
     lateinit var binding: ActivityCustomerDashboardBinding
