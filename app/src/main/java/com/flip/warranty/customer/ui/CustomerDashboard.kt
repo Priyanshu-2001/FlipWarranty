@@ -12,7 +12,9 @@ import com.flip.warranty.R
 import com.flip.warranty.customer.startAnimation
 import com.flip.warranty.databinding.ActivityCustomerDashboardBinding
 import com.flip.warranty.login.LoginPage
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CustomerDashboard : AppCompatActivity() {
     lateinit var binding: ActivityCustomerDashboardBinding
 

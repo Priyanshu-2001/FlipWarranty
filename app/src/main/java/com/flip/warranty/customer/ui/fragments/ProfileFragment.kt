@@ -1,32 +1,37 @@
 package com.flip.warranty.customer.ui.fragments
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.flip.warranty.R
 import com.flip.warranty.databinding.FragmentProfileBinding
+import com.flip.warranty.login.LoginPage
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-class ProfileFragment : Fragment() {
+@AndroidEntryPoint
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
     lateinit var binding: FragmentProfileBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
+    @Inject
+    lateinit var sharedPref: SharedPreferences
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
-
+        binding.profile.nameTV.text = sharedPref.getString("email", "Email Not Available")
+        binding.profile.emailTV.text =
+            sharedPref.getString("blockChainAddress", "Block Chain Address Not Available")
         val colorList = resources.getIntArray(R.array.BgColorList)
+
+        binding.LogOut.setOnClickListener {
+            val v = sharedPref.edit().clear()
+            v.apply()
+            activity?.finishAffinity()
+            startActivity(Intent(context, LoginPage::class.java))
+        }
         binding.profile.cardView.setBackgroundColor(colorList[colorList.indices.random()])
     }
 }

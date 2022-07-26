@@ -10,7 +10,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.flip.warranty.R
 import com.flip.warranty.customer.WarrantyInfoActivity
-import com.flip.warranty.customer.services.CaptureAct
+import com.flip.warranty.customer.uitility.CaptureAct
 import com.flip.warranty.databinding.FragmentWarrantyScannerBinding
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
