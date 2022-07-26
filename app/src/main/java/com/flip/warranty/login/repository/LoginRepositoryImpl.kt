@@ -35,6 +35,7 @@ class LoginRepositoryImpl(private val api: LoginAPI, val app: Application) : Log
                     putString("blockChainAddress", details.user_blockchain_account_address)
                     putString("salt", details.salt)
                     putInt("__v", details.__v)
+                    putString("userType", details.user_type)
                     commit()
                 }
 
