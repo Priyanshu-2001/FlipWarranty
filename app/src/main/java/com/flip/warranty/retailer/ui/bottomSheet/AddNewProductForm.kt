@@ -17,11 +17,13 @@ import com.flip.warranty.retailer.dataModel.NewProductDataModel
 import com.flip.warranty.retailer.utility.Validation
 import com.flip.warranty.retailer.viewModel.RetailerViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AddNewProductForm : BottomSheetDialogFragment() {
-
+    lateinit var firebase: FirebaseApp
     lateinit var binding: AddNewProductBottomsheetBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +41,7 @@ class AddNewProductForm : BottomSheetDialogFragment() {
             container,
             false
         )
-
+        firebase = FirebaseApp.getInstance()
         val viewModel: RetailerViewModel by viewModels()
 
         val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
@@ -66,15 +68,17 @@ class AddNewProductForm : BottomSheetDialogFragment() {
                 Validation.validateDescription(binding.description) &&
                 Validation.validatePrice(binding.price)
             ) {
+                val database = FirebaseDatabase.getInstance()
+                val key = database.getReference("temp").push().key
                 viewModel.addProduct(
                     NewProductDataModel(
                         binding.description.text.toString(),
                         (System.currentTimeMillis() / 1000L).toString(),
                         securePreferences.getString("email", "null")!!,
                         binding.name.text.toString(),
-                        "ImageURL",
+                        "https://picsum.photos/150/120", //random image for now
                         binding.price.text.toString(),
-                        "Serial Nimber from Firebse"
+                        key!!
                     ),
                     securePreferences.getString("token", "")!!
                 )
