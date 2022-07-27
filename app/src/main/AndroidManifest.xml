@@ -39,7 +39,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".customer.WarrantyInfoActivity"
+            android:name=".customer.ui.WarrantyInfoActivity"
             android:exported="false"
             android:parentActivityName=".customer.GetWarranty" />
         <activity

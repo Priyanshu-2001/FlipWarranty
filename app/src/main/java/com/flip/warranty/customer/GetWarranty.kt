@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.flip.warranty.R
+import com.flip.warranty.customer.ui.WarrantyInfoActivity
 import com.flip.warranty.customer.uitility.CaptureAct
 import com.flip.warranty.databinding.GetWarrantyBinding
 import com.journeyapps.barcodescanner.ScanContract
@@ -40,7 +41,11 @@ class GetWarranty : AppCompatActivity() {
         val i = Intent(this, WarrantyInfoActivity::class.java)
 
         i.putExtra("serialNumber", sNumber)
-        startActivity(i)
+        if (sNumber.isNotBlank())
+            startActivity(i)
+        else
+            Toast.makeText(this, "Please Provide Serial Number Of the Product", Toast.LENGTH_SHORT)
+                .show()
     }
 
     private val barcodeLauncher = registerForActivityResult(
@@ -49,8 +54,6 @@ class GetWarranty : AppCompatActivity() {
         if (result.contents == null) {
             Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG)
-                .show()
             startWarrantyActivity(result.contents)
         }
     }

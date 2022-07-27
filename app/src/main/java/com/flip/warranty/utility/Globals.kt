@@ -11,4 +11,6 @@ object Globals {
     const val SignWarrantyForProduct = "/signWarranty"
     const val SellProduct = "/sellProduct"
     const val GetProductWarranty = "/getWarranty/"
+
+    const val TAG = "Get Your Shit Together"
 }
