@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/appBG"
+        android:animateLayoutChanges="true"
         android:fitsSystemWindows="true">
 
         <androidx.appcompat.widget.Toolbar
@@ -25,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/carter_one"
                 android:text="@string/your_listings"
                 android:textColor="@color/white"
                 android:textSize="25sp"
@@ -44,10 +45,126 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/listedItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/three_dimensional_text_view_background"
+                    android:gravity="center"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="15dp"
+                    android:tag="sticky"
+                    android:text="Listed Items"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    app:drawableEndCompat="@drawable/ic_baseline_arrow_drop_down_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listedRCV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:maxLength="2"
+                    android:overScrollMode="never"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/listedItems" />
+
+                <TextView
+                    android:id="@+id/unsignedItems"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/three_dimensional_text_view_background"
+                    android:gravity="center"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="15dp"
+                    android:tag="sticky"
+                    android:text="UnSigned Items"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:visibility="invisible"
+                    app:drawableEndCompat="@drawable/ic_baseline_arrow_drop_down_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/listedRCV" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/unsignedRCV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/unsignedItems" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/three_dimensional_text_view_background"
+                    android:gravity="center"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="15dp"
+                    android:tag="sticky"
+                    android:text="Signed Items"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:visibility="invisible"
+                    app:drawableEndCompat="@drawable/ic_baseline_arrow_drop_down_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/unsignedRCV" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/signedRCV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:visibility="visible"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 

@@ -11,5 +11,6 @@ data class ProductDetailsData(
     val retailerName: String
 ) {
     var soldStatus: String = "0"
+    var signStatus: String = "0"
     var serialNUmber: String = "0"
 }

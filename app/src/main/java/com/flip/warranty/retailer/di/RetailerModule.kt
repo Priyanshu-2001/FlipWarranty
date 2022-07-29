@@ -1,6 +1,7 @@
 package com.flip.warranty.retailer.di
 
-import android.app.Application
+import android.content.SharedPreferences
+import com.flip.warranty.customer.APIs.GetSerialNumberListApi
 import com.flip.warranty.retailer.api.AddNewProductApi
 import com.flip.warranty.retailer.repositoryImpl.AddNewProductImpl
 import com.flip.warranty.utility.Globals
@@ -26,8 +27,12 @@ object RetailerModule {
 
     @Provides
     @Singleton
-    fun providesRepositoryImpl(api: AddNewProductApi, app: Application): AddNewProductImpl {
-        return AddNewProductImpl(api, app)
+    fun providesRepositoryImpl(
+        api: AddNewProductApi,
+        sharedPreferences: SharedPreferences,
+        serialListApi: GetSerialNumberListApi
+    ): AddNewProductImpl {
+        return AddNewProductImpl(api, sharedPreferences, serialListApi)
     }
 
 }

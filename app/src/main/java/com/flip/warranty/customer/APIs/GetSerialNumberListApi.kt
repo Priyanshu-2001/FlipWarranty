@@ -28,4 +28,12 @@ interface GetSerialNumberListApi {
         @Body buyer: BuyNowBuyerDetails,
         @Header("Authorization") token: String
     ): Response<SellinProductToBuyerData>
+
+    @GET("/getWarrantyStatus/{productSerialNum}")
+    suspend fun getSignStatus(
+        @Path("productSerialNum") SerialNum: String,
+        @Header("Authorization") token: String
+    ): Response<SellinProductToBuyerData>
+
+
 }
