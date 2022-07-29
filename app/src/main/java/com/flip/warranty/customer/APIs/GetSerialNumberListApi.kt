@@ -9,7 +9,7 @@ interface GetSerialNumberListApi {
     @GET("/getSerialNumberList")
     suspend fun getSerialNumberListApi(
         @Header("Authorization") token: String
-    ): Response<ProductSerialNumberList>
+    ): Response<ProductSerialNumberListData>
 
     @POST("/getProduct/{productSerialNumber}")
     suspend fun getProductDetails(

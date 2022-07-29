@@ -1,6 +1,7 @@
 package com.flip.warranty.retailer.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,19 +32,26 @@ class RetailerViewModel @Inject constructor(
     }
 
     init {
-        productList.observeForever {
+        var temp = productList
+
+        temp.observeForever {
+            Log.e("TAG", "All :${temp.value.toString()} ")
             productListUnsold.value = it.filter { prod ->
                 prod.soldStatus == "0"
             } as ArrayList
         }
-        productList.observeForever {
+        temp = productList
+        temp.observeForever {
             productListSold.value = it.filter { prod ->
-                prod.soldStatus == "1"
+                prod.signStatus == "0" //signed
             } as ArrayList
+            Log.e("TAG", "list sold : ${temp.value!![3].signStatus}")
         }
-        productList.observeForever {
+        temp = productList
+        temp.observeForever {
+            Log.e("TAG", "333 All :${temp.value.toString()} ")
             productListUnSigned.value = it.filter { prod ->
-                prod.signStatus == "1"
+                prod.signStatus == "1" //unsigned
             } as ArrayList
         }
         viewModelScope.launch {

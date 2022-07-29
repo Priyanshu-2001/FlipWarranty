@@ -53,30 +53,30 @@ class AddNewProductImpl(
             serialNumberApi.getSerialNumberListApi(token)
         val list = ArrayList<ProductDetailsData>()
         if (response.isSuccessful) {
-            response.body()?.data?.forEach {
+            response.body()?.product_list?.forEach {
                 val res = serialNumberApi.getProductDetails(
-                    it.serial_number,
+                    it,
                     token
                 )
                 if (res.isSuccessful) {
                     val soldRes = serialNumberApi.getProductSoldStatus(
-                        it.serial_number,
+                        it,
                         token
                     )
                     val signRes = serialNumberApi.getSignStatus(
-                        it.serial_number,
+                        it,
                         token
                     )
                     if (soldRes.isSuccessful) {
                         val item = res.body()!!
                         item.soldStatus = soldRes.body()?.soldStatus ?: "0"
-                        item.serialNUmber = it.serial_number
+                        item.serialNUmber = it
                     } else {
                         Log.e(TAG, "errro getProductNumberList: ${soldRes.raw()}")
                     }
                     if (signRes.isSuccessful) {
                         val item = res.body()!!
-                        item.signStatus = soldRes.body()?.soldStatus ?: "0"
+                        item.signStatus = signRes.body()?.status ?: "0"
                         list.add(
                             item
                         )

@@ -17,21 +17,23 @@ class GetProductRepositoryImpl(
         val response =
             api.getSerialNumberListApi(token)
         val list = ArrayList<ProductDetailsData>()
+        Log.e(TAG, "getProductNumberList: ${response.body().toString()}")
         if (response.isSuccessful) {
-            response.body()?.data?.forEach {
+            response.body()?.product_list?.forEach {
+                val serialNumber = it
                 val res = api.getProductDetails(
-                    it.serial_number,
+                    serialNumber,
                     token
                 )
                 if (res.isSuccessful) {
                     val soldRes = api.getProductSoldStatus(
-                        it.serial_number,
+                        serialNumber,
                         token
                     )
                     if (soldRes.isSuccessful) {
                         val item = res.body()!!
                         item.soldStatus = soldRes.body()?.soldStatus ?: "0"
-                        item.serialNUmber = it.serial_number
+                        item.serialNUmber = serialNumber
                         list.add(
                             item
                         )
