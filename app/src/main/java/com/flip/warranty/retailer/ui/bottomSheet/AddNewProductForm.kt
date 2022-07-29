@@ -16,14 +16,13 @@ import com.flip.warranty.databinding.AddNewProductBottomsheetBinding
 import com.flip.warranty.retailer.dataModel.NewProductDataModel
 import com.flip.warranty.retailer.utility.Validation
 import com.flip.warranty.retailer.viewModel.RetailerViewModel
+import com.flip.warranty.utility.Globals.TAG
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.firebase.FirebaseApp
 import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AddNewProductForm : BottomSheetDialogFragment() {
-    lateinit var firebase: FirebaseApp
     lateinit var binding: AddNewProductBottomsheetBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +40,7 @@ class AddNewProductForm : BottomSheetDialogFragment() {
             container,
             false
         )
-        firebase = FirebaseApp.getInstance()
+
         val viewModel: RetailerViewModel by viewModels()
 
         val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
@@ -68,8 +67,10 @@ class AddNewProductForm : BottomSheetDialogFragment() {
                 Validation.validateDescription(binding.description) &&
                 Validation.validatePrice(binding.price)
             ) {
-                val database = FirebaseDatabase.getInstance()
+                val database =
+                    FirebaseDatabase.getInstance("https://vax-in-60807-default-rtdb.asia-southeast1.firebasedatabase.app")
                 val key = database.getReference("temp").push().key
+                Log.e(TAG, "onCreateView: $key")
                 viewModel.addProduct(
                     NewProductDataModel(
                         binding.description.text.toString(),

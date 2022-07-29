@@ -16,7 +16,7 @@ class AddNewProductImpl(private val api: AddNewProductApi, private val app: Appl
             Log.e("TAG", "AddProduct: Product Added")
             true
         } else {
-            Log.e("TAG", "AddProduct: Product Added")
+            Log.e("TAG", "AddProduct: Product Added failed ${response.raw()}")
             false
         }
     }

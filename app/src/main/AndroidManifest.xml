@@ -19,21 +19,15 @@
         <activity
             android:name=".login.LoginPage"
             android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".customer.ui.CustomerDashboard"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".customer.ui.CustomerDashboard"
+            android:exported="true"></activity>
         <activity
             android:name=".retailer.ui.RetailerDashboard"
             android:exported="false" />
