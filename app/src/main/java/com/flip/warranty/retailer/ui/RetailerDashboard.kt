@@ -6,21 +6,23 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.flip.warranty.R
-import com.flip.warranty.customer.uitility.BuyNowClickInterface
+import com.flip.warranty.customer.dataModel.ProductDetailsData
 import com.flip.warranty.databinding.ActivityRetailerDashboardBinding
 import com.flip.warranty.login.LoginPage
 import com.flip.warranty.retailer.rcvAdapter.MainRetailerRcvAdapter
 import com.flip.warranty.retailer.ui.bottomSheet.AddNewProductForm
+import com.flip.warranty.retailer.utility.onClickItemRetailer
 import com.flip.warranty.retailer.viewModel.RetailerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class RetailerDashboard : AppCompatActivity(), BuyNowClickInterface {
+class RetailerDashboard : AppCompatActivity(), onClickItemRetailer {
     lateinit var binding: ActivityRetailerDashboardBinding
 
     @Inject
@@ -51,14 +53,17 @@ class RetailerDashboard : AppCompatActivity(), BuyNowClickInterface {
     }
 
     private fun addProductsToRCVs() {
+        ViewCompat.setNestedScrollingEnabled(binding.listedRCV, false)
+        ViewCompat.setNestedScrollingEnabled(binding.signedRCV, false)
+        ViewCompat.setNestedScrollingEnabled(binding.unsignedItems, false)
         viewModel.productListUnsold.observeForever {
-            binding.listedRCV.adapter = MainRetailerRcvAdapter(this, it)
+            binding.listedRCV.adapter = MainRetailerRcvAdapter(this, it, 1)
         }
         viewModel.productListUnSigned.observeForever {
-            binding.unsignedRCV.adapter = MainRetailerRcvAdapter(this, it)
+            binding.unsignedRCV.adapter = MainRetailerRcvAdapter(this, it, 2)
         }
         viewModel.productListSold.observeForever {
-            binding.signedRCV.adapter = MainRetailerRcvAdapter(this, it)
+            binding.signedRCV.adapter = MainRetailerRcvAdapter(this, it, 3)
             binding.progressBar.visibility = View.GONE
             binding.listedItems.visibility = View.VISIBLE
             binding.unsignedItems.visibility = View.VISIBLE
@@ -66,9 +71,16 @@ class RetailerDashboard : AppCompatActivity(), BuyNowClickInterface {
         }
     }
 
-
-    override fun onClick(pos: Int) {
-        TODO("Not yet implemented")
+    override fun onclick(pos: Int, data: ProductDetailsData, type: Int) {
+        when (type) {
+            1 ->
+                viewModel.clickOnlisted(pos, data)
+            2 -> {
+                viewModel.clickOnUnsigned(pos, data)
+            }
+            3 ->
+                viewModel.clickOnSigned(pos, data)
+        }
     }
 
 }

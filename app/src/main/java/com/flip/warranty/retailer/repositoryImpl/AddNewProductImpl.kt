@@ -7,9 +7,10 @@ import com.flip.warranty.customer.dataModel.BuyNowBuyerDetails
 import com.flip.warranty.customer.dataModel.ProductDetailsData
 import com.flip.warranty.retailer.api.AddNewProductApi
 import com.flip.warranty.retailer.dataModel.NewProductDataModel
+import com.flip.warranty.retailer.dataModel.SignTheNewProduct
 import com.flip.warranty.retailer.repository.AddNewProductRepository
 import com.flip.warranty.retailer.repository.SeeListOfProductsListed
-import com.flip.warranty.utility.Globals
+import com.flip.warranty.utility.Globals.TAG
 
 class AddNewProductImpl(
     private val api: AddNewProductApi,
@@ -28,6 +29,22 @@ class AddNewProductImpl(
         } else {
             Log.e("TAG", "AddProduct: Product Added failed ${response.raw()}")
             false
+        }
+    }
+
+    override suspend fun signTheUnsignedProduct(data: ProductDetailsData) {
+        val res = api.signNewProductApi(
+            SignTheNewProduct(
+                "Condition Apply as Per Policy",
+                (System.currentTimeMillis() / 1000L).toString(),
+                data.serialNUmber,
+                (System.currentTimeMillis() / 1000L).toString()
+            ), token
+        )
+        if (res.isSuccessful) {
+            Log.e(TAG, "signTheUnsignedProduct: " + res.message())
+        } else {
+            Log.e(TAG, "buyProduct: failed to Sign " + res.raw())
         }
     }
 
@@ -55,7 +72,7 @@ class AddNewProductImpl(
                         item.soldStatus = soldRes.body()?.soldStatus ?: "0"
                         item.serialNUmber = it.serial_number
                     } else {
-                        Log.e(Globals.TAG, "errro getProductNumberList: ${soldRes.raw()}")
+                        Log.e(TAG, "errro getProductNumberList: ${soldRes.raw()}")
                     }
                     if (signRes.isSuccessful) {
                         val item = res.body()!!
@@ -64,7 +81,7 @@ class AddNewProductImpl(
                             item
                         )
                     } else {
-                        Log.e(Globals.TAG, "error getProductNumberList: ${soldRes.raw()}")
+                        Log.e(TAG, "error getProductNumberList: ${soldRes.raw()}")
                     }
                 } else {
                     res.headers()
@@ -85,13 +102,13 @@ class AddNewProductImpl(
             val res = serialNumberApi.sellProductApi(it, token)
             if (res.isSuccessful) {
                 Log.e(
-                    Globals.TAG,
+                    TAG,
                     "buyProduct: Success " + (res.body()?.transactionHash?.receipt?.blockHash
                         ?: " ")
                 )
             } else {
-                Log.e(Globals.TAG, "buyProduct: failed to Buy " + res.raw())
-                Log.e(Globals.TAG, "buyProduct: failed to Buy ${it.new_owner}")
+                Log.e(TAG, "buyProduct: failed to Buy " + res.raw())
+                Log.e(TAG, "buyProduct: failed to Buy ${it.new_owner}")
             }
         }
 
