@@ -10,8 +10,8 @@ import com.flip.warranty.databinding.ProductDetailSingleBinding
 import com.squareup.picasso.Picasso
 
 class BuyNowAdapter(
-    private val productList: ArrayList<ProductDetailsData>,
-    val clickInterface: BuyNowClickInterface
+    private val productList: List<ProductDetailsData>,
+    private val clickInterface: BuyNowClickInterface
 ) :
     RecyclerView.Adapter<BuyNowAdapter.BuyViewHolder>() {
 
@@ -25,19 +25,18 @@ class BuyNowAdapter(
     }
 
     override fun onBindViewHolder(holder: BuyViewHolder, position: Int) {
-        if (productList[position].soldStatus == "0") {
-            holder.binding.ProductName.text = productList[position].prodDisplayName
-            holder.binding.ProductSummary.text = productList[position].manufacturer
-            holder.binding.ProductPrice.text = productList[position].price
-            val imageURL = productList[position].image
-            if (imageURL.isNotBlank()) {
-                Picasso
-                    .get()
-                    .load(imageURL)
-                    .placeholder(R.drawable.ic_baseline_add_photo_alternate_24)
-                    .into(holder.binding.productImage)
-            }
+        holder.binding.ProductName.text = productList[position].prodDisplayName
+        holder.binding.ProductSummary.text = productList[position].manufacturer
+        holder.binding.ProductPrice.text = productList[position].price
+        val imageURL = productList[position].image
+        if (imageURL.isNotBlank()) {
+            Picasso
+                .get()
+//                    .load(imageURL)
+                .load(R.drawable.ic_baseline_add_photo_alternate_24)
+                .into(holder.binding.productImage)
         }
+
         holder.binding.buyBtn.setOnClickListener {
             clickInterface.onClick(position)
         }

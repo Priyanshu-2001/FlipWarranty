@@ -39,13 +39,14 @@ class LoginPage : AppCompatActivity() {
                 EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
             )
             if (securePreferences.contains("token")) {
-                if (securePreferences.getString("userType", "normal") == "admin") {
-                    val i = Intent(this, RetailerDashboard::class.java)
-                    startActivity(i)
+                val i: Intent = if (securePreferences.getString("userType", "normal") == "admin") {
+                    Intent(this, RetailerDashboard::class.java)
+
                 } else {
-                    val i = Intent(this, CustomerDashboard::class.java)
-                    startActivity(i)
+                    Intent(this, CustomerDashboard::class.java)
                 }
+                startActivity(i)
+                finishAffinity()
             }
         } catch (E: Exception) {
 

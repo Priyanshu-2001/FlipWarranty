@@ -14,8 +14,14 @@ import javax.inject.Inject
 @HiltViewModel
 class BuyNowViewModel @Inject constructor(val repository: GetProductRepositoryImpl) : ViewModel() {
     val productList = MutableLiveData<ArrayList<ProductDetailsData>>()
+    val productListUnsold = MutableLiveData<ArrayList<ProductDetailsData>>()
 
     init {
+        productList.observeForever {
+            productListUnsold.value = it.filter { prod ->
+                prod.soldStatus == "0"
+            } as ArrayList
+        }
         viewModelScope.launch {
             productList.value = repository.getProductNumberList()
         }
@@ -24,13 +30,11 @@ class BuyNowViewModel @Inject constructor(val repository: GetProductRepositoryIm
     fun buyItem(pos: Int) {
         Log.e(TAG, "buyItem: " + productList.value?.get(pos))
 
-        val list = productList.value
         viewModelScope.launch {
-            repository.buyProduct(list!![pos])
+            repository.buyProduct(productListUnsold.value!![pos])
         }
-        list?.removeAt(pos)
-        productList.value = list!!
-
+        productListUnsold.value!!.removeAt(pos)
+        productListUnsold.value = productListUnsold.value
     }
 
 }
