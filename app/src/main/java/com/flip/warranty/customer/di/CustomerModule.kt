@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.flip.warranty.customer.APIs.GetSerialNumberListApi
 import com.flip.warranty.customer.APIs.WarrantyDetailsAPI
+import com.flip.warranty.customer.reopsitory.GetProductRepositoryImpl
 import com.flip.warranty.customer.reopsitory.GetWarrantyRepositoryImpl
 import com.flip.warranty.utility.Globals
 import dagger.Module
@@ -51,4 +53,21 @@ object CustomerModule {
         return GetWarrantyRepositoryImpl(api, app, pref)
     }
 
+    @Provides
+    @Singleton
+    fun providesProductListApi(): GetSerialNumberListApi = Retrofit.Builder()
+        .baseUrl(Globals.EndPoint)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(GetSerialNumberListApi::class.java)
+
+
+    @Provides
+    @Singleton
+    fun providesProductListRepositoryImpl(
+        api: GetSerialNumberListApi,
+        pref: SharedPreferences
+    ): GetProductRepositoryImpl {
+        return GetProductRepositoryImpl(api, pref)
+    }
 }

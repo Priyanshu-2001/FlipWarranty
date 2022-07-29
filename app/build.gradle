@@ -82,4 +82,8 @@ dependencies {
 
     //encrypted sharedPref
     implementation "androidx.security:security-crypto:1.0.0"
+
+    //Glide
+    implementation 'com.squareup.picasso:picasso:2.8'
+
 }
