@@ -45,7 +45,7 @@ class MainRetailerRcvAdapter(
         if (imageURL.isNotBlank()) {
             Picasso
                 .get()
-                .load("https://picsum.photos/150/200")
+                .load(imageURL)
                 .placeholder(R.drawable.ic_baseline_add_photo_alternate_24)
                 .into(holder.binding.productImage)
         }

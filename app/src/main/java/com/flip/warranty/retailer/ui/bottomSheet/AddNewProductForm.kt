@@ -1,5 +1,7 @@
 package com.flip.warranty.retailer.ui.bottomSheet
 
+import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,7 +21,10 @@ import com.flip.warranty.retailer.viewModel.RetailerViewModel
 import com.flip.warranty.utility.Globals.TAG
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddNewProductForm : BottomSheetDialogFragment() {
@@ -28,6 +33,13 @@ class AddNewProductForm : BottomSheetDialogFragment() {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialogThemeNoFloating)
     }
+
+    @Inject
+    lateinit var securePreferences: SharedPreferences
+
+    var imageUrl: Uri? = null
+    lateinit var downloadUrl: UploadTask.TaskSnapshot
+    val viewModel: RetailerViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,8 +52,6 @@ class AddNewProductForm : BottomSheetDialogFragment() {
             container,
             false
         )
-
-        val viewModel: RetailerViewModel by viewModels()
 
         val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
         val mainKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
@@ -70,19 +80,30 @@ class AddNewProductForm : BottomSheetDialogFragment() {
                 val database =
                     FirebaseDatabase.getInstance("https://vax-in-60807-default-rtdb.asia-southeast1.firebasedatabase.app")
                 val key = database.getReference("temp").push().key
-                Log.e(TAG, "onCreateView: $key")
-                viewModel.addProduct(
-                    NewProductDataModel(
-                        binding.description.text.toString(),
-                        (System.currentTimeMillis() / 1000L).toString(),
-                        securePreferences.getString("email", "null")!!,
-                        binding.name.text.toString(),
-                        "https://picsum.photos/300/300", //random image for now
-                        binding.price.text.toString(),
-                        key!!
-                    ),
-                    securePreferences.getString("token", "")!!
-                )
+
+                if (imageUrl != null) {
+                    checkAndUploadImage(key!!)
+                } else {
+                    Toast.makeText(
+                        context,
+                        "There is no Imagee Uploaded By You",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Log.e(TAG, "onCreateView: $key")
+                    viewModel.addProduct(
+                        NewProductDataModel(
+                            binding.description.text.toString(),
+                            (System.currentTimeMillis() / 1000L).toString(),
+                            securePreferences.getString("email", "null")!!,
+                            binding.name.text.toString(),
+                            "https://picsum.photos/100/100", //random image for now
+                            binding.price.text.toString(),
+                            key!!
+                        ),
+                        securePreferences.getString("token", "")!!
+                    )
+                }
             }
         }
         viewModel.response.observe(this) {
@@ -97,12 +118,37 @@ class AddNewProductForm : BottomSheetDialogFragment() {
         return binding.root
     }
 
+    private fun checkAndUploadImage(key: String) {
+        val file = imageUrl
+        val storageRef =
+            FirebaseStorage.getInstance().reference.child("images/${System.currentTimeMillis()}")
+        file?.let { storageRef.putFile(it) }?.addOnSuccessListener { taskSnapshot ->
+            storageRef.downloadUrl.addOnSuccessListener {
+                viewModel.addProduct(
+                    NewProductDataModel(
+                        binding.description.text.toString(),
+                        (System.currentTimeMillis() / 1000L).toString(),
+                        securePreferences.getString("email", "null")!!,
+                        binding.name.text.toString(),
+                        it.toString(), //random image for now
+                        binding.price.text.toString(),
+                        key
+                    ),
+                    securePreferences.getString("token", "")!!
+                )
+            }
+        }
+
+
+    }
+
     private val imagePicLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
         if (it != null) {
             binding.imageView.visibility = View.VISIBLE
             binding.addImage.visibility = View.INVISIBLE
             binding.deleteBtn.visibility = View.VISIBLE
             println("uir $it")
+            imageUrl = it
             binding.imageView.setImageURI(it)
         }
 
