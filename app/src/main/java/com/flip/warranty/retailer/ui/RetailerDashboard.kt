@@ -57,9 +57,9 @@ class RetailerDashboard : AppCompatActivity(), onClickItemRetailer {
     }
 
     private fun addProductsToRCVs() {
-        ViewCompat.setNestedScrollingEnabled(binding.listedRCV, false)
+//        ViewCompat.setNestedScrollingEnabled(binding.listedRCV, false)
         ViewCompat.setNestedScrollingEnabled(binding.signedRCV, false)
-        ViewCompat.setNestedScrollingEnabled(binding.unsignedItems, false)
+//        ViewCompat.setNestedScrollingEnabled(binding.unsignedItems, false)
         viewModel.productListUnsold.observeForever {
             binding.listedRCV.adapter = MainRetailerRcvAdapter(this, it, 1)
         }

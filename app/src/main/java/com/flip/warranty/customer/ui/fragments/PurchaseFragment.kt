@@ -44,6 +44,7 @@ class PurchaseFragment : Fragment(R.layout.fragment_purchase), BuyNowClickInterf
     }
 
     override fun onClick(pos: Int, data: ProductDetailsData) {
-        viewModel.buyItem(pos)
+        binding.progressBar.visibility = View.VISIBLE
+        viewModel.buyItem(pos, binding.progressBar)
     }
 }

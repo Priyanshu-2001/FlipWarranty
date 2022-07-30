@@ -2,10 +2,13 @@ package com.flip.warranty.customer.reopsitory
 
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.flip.warranty.customer.APIs.GetSerialNumberListApi
 import com.flip.warranty.customer.dataModel.BuyNowBuyerDetails
 import com.flip.warranty.customer.dataModel.ProductDetailsData
+import com.flip.warranty.customer.dataModel.SellinProductToBuyerData
 import com.flip.warranty.utility.Globals.TAG
+import retrofit2.Response
 
 class GetProductRepositoryImpl(
     val api: GetSerialNumberListApi,
@@ -48,7 +51,9 @@ class GetProductRepositoryImpl(
         return list
     }
 
-    override suspend fun buyProduct(data: ProductDetailsData) {
+    override suspend fun buyProduct(data: ProductDetailsData): MutableLiveData<Response<SellinProductToBuyerData>> {
+        val output = MutableLiveData<Response<SellinProductToBuyerData>>()
+
         sharedPreferences.getString("blockChainAddress", " ")?.let {
             BuyNowBuyerDetails(
                 serial_number = data.serialNUmber,
@@ -61,6 +66,7 @@ class GetProductRepositoryImpl(
                 token
             )
             if (res.isSuccessful) {
+                output.value = res
                 Log.e(
                     TAG, "buyProduct: Success " + (res.body()?.transactionHash?.receipt?.blockHash
                         ?: " ")
@@ -70,7 +76,7 @@ class GetProductRepositoryImpl(
                 Log.e(TAG, "buyProduct: failed to Buy ${it.new_owner}")
             }
         }
-
+        return output
     }
 
     override suspend fun getSingleProductDetail(serialNumber: String): ProductDetailsData {
