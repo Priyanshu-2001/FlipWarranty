@@ -31,7 +31,8 @@ class BuyNowAdapter(
         }
         holder.binding.ProductName.text = productList[position].prodDisplayName
         holder.binding.ProductSummary.text = productList[position].manufacturer
-        holder.binding.ProductPrice.text = productList[position].price
+        holder.binding.ProductPrice.text =
+            StringBuilder().append("\u20B9").append(" " + productList[position].price)
         val imageURL = productList[position].image
         if (imageURL.isNotBlank()) {
             Picasso
@@ -42,7 +43,7 @@ class BuyNowAdapter(
         }
 
         holder.binding.buyBtn.setOnClickListener {
-            clickInterface.onClick(position)
+            clickInterface.onClick(position, productList[position])
         }
     }
 

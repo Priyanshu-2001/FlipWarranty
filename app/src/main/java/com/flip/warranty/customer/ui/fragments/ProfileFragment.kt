@@ -7,7 +7,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.flip.warranty.R
+import com.flip.warranty.customer.dataModel.ProductDetailsData
 import com.flip.warranty.customer.rcvAdapter.BuyNowAdapter
+import com.flip.warranty.customer.ui.WarrantyInfoActivity
 import com.flip.warranty.customer.uitility.BuyNowClickInterface
 import com.flip.warranty.customer.viewModel.BuyNowViewModel
 import com.flip.warranty.databinding.FragmentProfileBinding
@@ -51,7 +53,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), BuyNowClickInterfac
         binding.profile.cardView.setBackgroundColor(colorList[colorList.indices.random()])
     }
 
-    override fun onClick(pos: Int) {
-
+    override fun onClick(pos: Int, data: ProductDetailsData) {
+        val i = Intent(context, WarrantyInfoActivity::class.java)
+        i.putExtra("serialNumber", data.serialNUmber)
+        startActivity(i)
     }
 }

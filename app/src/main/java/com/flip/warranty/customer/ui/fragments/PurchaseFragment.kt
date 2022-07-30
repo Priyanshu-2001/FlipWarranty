@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.flip.warranty.R
+import com.flip.warranty.customer.dataModel.ProductDetailsData
 import com.flip.warranty.customer.rcvAdapter.BuyNowAdapter
 import com.flip.warranty.customer.uitility.BuyNowClickInterface
 import com.flip.warranty.customer.viewModel.BuyNowViewModel
@@ -28,6 +29,9 @@ class PurchaseFragment : Fragment(R.layout.fragment_purchase), BuyNowClickInterf
             delay(1000)
             showProducts()
         }
+        binding.swipe2Refresh.setOnRefreshListener {
+            viewModel.loadDataBuyData()
+        }
     }
 
     private fun showProducts() {
@@ -35,10 +39,11 @@ class PurchaseFragment : Fragment(R.layout.fragment_purchase), BuyNowClickInterf
             binding.buyNowRCV.adapter = BuyNowAdapter(it, this, false)
             binding.progressBar.visibility = View.GONE
             Log.e(TAG, "showProducts: " + it.size)
+            binding.swipe2Refresh.isRefreshing = false
         }
     }
 
-    override fun onClick(pos: Int) {
+    override fun onClick(pos: Int, data: ProductDetailsData) {
         viewModel.buyItem(pos)
     }
 }

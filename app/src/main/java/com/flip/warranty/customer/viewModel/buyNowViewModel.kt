@@ -23,9 +23,19 @@ class BuyNowViewModel @Inject constructor(val repository: GetProductRepositoryIm
                 prod.soldStatus == "0"
             } as ArrayList
         }
+        loadDataBuyData()
+        loadOrderHistory()
+    }
+
+    private fun loadOrderHistory() {
+        viewModelScope.launch {
+            productHistoryList.value = repository.getOrderHistoryProductList()
+        }
+    }
+
+    fun loadDataBuyData() {
         viewModelScope.launch {
             productList.value = repository.getProductNumberList()
-            productHistoryList.value = repository.getOrderHistoryProductList()
         }
     }
 

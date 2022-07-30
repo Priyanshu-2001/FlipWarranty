@@ -77,7 +77,7 @@ class AddNewProductForm : BottomSheetDialogFragment() {
                         (System.currentTimeMillis() / 1000L).toString(),
                         securePreferences.getString("email", "null")!!,
                         binding.name.text.toString(),
-                        "https://random.imagecdn.app/150/120", //random image for now
+                        "https://picsum.photos/300/300", //random image for now
                         binding.price.text.toString(),
                         key!!
                     ),

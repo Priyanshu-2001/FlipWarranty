@@ -42,7 +42,7 @@
             android:fontFamily="@font/carter_one"
             android:text="Product Name"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
             android:layout_margin="5dp"
             android:gravity="center"
             android:padding="5dp"
-            android:textColor="@color/white"
+            android:textColor="@color/lightBrown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/ProductName"

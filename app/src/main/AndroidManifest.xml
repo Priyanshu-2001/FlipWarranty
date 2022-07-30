@@ -11,9 +11,9 @@
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlipWarranty">
         <activity
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".customer.ui.CustomerDashboard"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".retailer.ui.RetailerDashboard"
             android:exported="false" />

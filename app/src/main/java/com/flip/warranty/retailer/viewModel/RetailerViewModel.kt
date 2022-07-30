@@ -51,7 +51,7 @@ class RetailerViewModel @Inject constructor(
     }
 
     fun loadFunc() {
-        productList.value = ArrayList()
+//        productList.value = ArrayList()
         viewModelScope.launch {
             productList.value = repositoryImpl.getProductNumberList()
         }
