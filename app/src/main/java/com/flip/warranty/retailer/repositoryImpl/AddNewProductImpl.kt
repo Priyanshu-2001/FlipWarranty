@@ -3,7 +3,6 @@ package com.flip.warranty.retailer.repositoryImpl
 import android.content.SharedPreferences
 import android.util.Log
 import com.flip.warranty.customer.APIs.GetSerialNumberListApi
-import com.flip.warranty.customer.dataModel.BuyNowBuyerDetails
 import com.flip.warranty.customer.dataModel.ProductDetailsData
 import com.flip.warranty.retailer.api.AddNewProductApi
 import com.flip.warranty.retailer.dataModel.NewProductDataModel
@@ -108,25 +107,7 @@ class AddNewProductImpl(
     }
 
     override suspend fun buyProduct(data: ProductDetailsData) {
-        sharedPreferences.getString("blockChainAddress", " ")?.let {
-            BuyNowBuyerDetails(
-                serial_number = data.serialNUmber,
-                new_owner = it
-            )
-        }?.let {
-            val res = serialNumberApi.sellProductApi(it, token)
-            if (res.isSuccessful) {
-                Log.e(
-                    TAG,
-                    "buyProduct: Success " + (res.body()?.transactionHash?.receipt?.blockHash
-                        ?: " ")
-                )
-            } else {
-                Log.e(TAG, "buyProduct: failed to Buy " + res.raw())
-                Log.e(TAG, "buyProduct: failed to Buy ${it.new_owner}")
-            }
-        }
-
+        TODO("Not yet implemented")
     }
 
 }

@@ -5,7 +5,6 @@ data class Receipt(
     val blockNumber: Int,
     val contractAddress: Any,
     val cumulativeGasUsed: Int,
-    val effectiveGasPrice: String,
     val from: String,
     val gasUsed: Int,
     val logs: List<Any>,
@@ -14,6 +13,5 @@ data class Receipt(
     val status: Boolean,
     val to: String,
     val transactionHash: String,
-    val transactionIndex: Int,
-    val type: String
+    val transactionIndex: Int
 )

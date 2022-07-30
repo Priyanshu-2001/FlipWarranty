@@ -52,7 +52,8 @@ class GetProductRepositoryImpl(
         sharedPreferences.getString("blockChainAddress", " ")?.let {
             BuyNowBuyerDetails(
                 serial_number = data.serialNUmber,
-                new_owner = it
+                new_owner = it,
+                message = "This Product is Secured By FlipSecure"
             )
         }?.let {
             val res = api.sellProductApi(
@@ -76,6 +77,7 @@ class GetProductRepositoryImpl(
         val response = api.getOrderHistoryApi(token)
         val list = ArrayList<ProductDetailsData>()
         if (response.isSuccessful) {
+            Log.e(TAG, "getOrderHistoryProductList: ${response.body().toString()}")
             response.body()?.owned_products?.forEach {
                 val serialNumber = it
                 val res = api.getProductDetails(
