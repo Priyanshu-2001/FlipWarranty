@@ -38,6 +38,10 @@ class RetailerDashboard : AppCompatActivity(), onClickItemRetailer {
             startActivity(Intent(this, LoginPage::class.java))
         }
 
+        binding.swipe2Refresh.setOnRefreshListener {
+            viewModel.loadFunc()
+        }
+
         lifecycleScope.launchWhenCreated {
             delay(1000)
             addProductsToRCVs()
@@ -62,12 +66,13 @@ class RetailerDashboard : AppCompatActivity(), onClickItemRetailer {
         viewModel.productListUnSigned.observeForever {
             binding.unsignedRCV.adapter = MainRetailerRcvAdapter(this, it, 2)
         }
-        viewModel.productListSold.observeForever {
+        viewModel.productListSigned.observeForever {
             binding.signedRCV.adapter = MainRetailerRcvAdapter(this, it, 3)
             binding.progressBar.visibility = View.GONE
             binding.listedItems.visibility = View.VISIBLE
             binding.unsignedItems.visibility = View.VISIBLE
             binding.textView3.visibility = View.VISIBLE
+            binding.swipe2Refresh.isRefreshing = false
         }
     }
 

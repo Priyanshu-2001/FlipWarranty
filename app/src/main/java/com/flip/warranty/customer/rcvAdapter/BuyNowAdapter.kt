@@ -11,7 +11,8 @@ import com.squareup.picasso.Picasso
 
 class BuyNowAdapter(
     private val productList: List<ProductDetailsData>,
-    private val clickInterface: BuyNowClickInterface
+    private val clickInterface: BuyNowClickInterface,
+    private val isOrderHistory: Boolean
 ) :
     RecyclerView.Adapter<BuyNowAdapter.BuyViewHolder>() {
 
@@ -25,6 +26,9 @@ class BuyNowAdapter(
     }
 
     override fun onBindViewHolder(holder: BuyViewHolder, position: Int) {
+        if (isOrderHistory) {
+            holder.binding.buyBtn.text = "Details"
+        }
         holder.binding.ProductName.text = productList[position].prodDisplayName
         holder.binding.ProductSummary.text = productList[position].manufacturer
         holder.binding.ProductPrice.text = productList[position].price

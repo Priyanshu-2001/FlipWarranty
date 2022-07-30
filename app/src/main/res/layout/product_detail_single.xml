@@ -39,8 +39,10 @@
             android:id="@+id/ProductName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/carter_one"
             android:text="Product Name"
             android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,20 +66,20 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:gravity="center"
+            android:fontFamily="@font/carter_one"
             android:padding="5dp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             tools:text="50000" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buyBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-            android:background="@null"
+            android:background="@drawable/white_premium_btn"
             android:text="Buy Now"
-            android:textColor="@color/MattPinkDarkBottom"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

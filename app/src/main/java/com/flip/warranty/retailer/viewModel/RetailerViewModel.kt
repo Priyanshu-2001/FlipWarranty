@@ -1,7 +1,6 @@
 package com.flip.warranty.retailer.viewModel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,7 +20,7 @@ class RetailerViewModel @Inject constructor(
     var response = MutableLiveData<Boolean>()
     private val productList = MutableLiveData<ArrayList<ProductDetailsData>>()
     val productListUnsold = MutableLiveData<ArrayList<ProductDetailsData>>()
-    val productListSold = MutableLiveData<ArrayList<ProductDetailsData>>()
+    val productListSigned = MutableLiveData<ArrayList<ProductDetailsData>>()
     val productListUnSigned = MutableLiveData<ArrayList<ProductDetailsData>>()
 
     fun addProduct(data: NewProductDataModel, token: String) {
@@ -32,28 +31,27 @@ class RetailerViewModel @Inject constructor(
     }
 
     init {
-        var temp = productList
-
-        temp.observeForever {
-            Log.e("TAG", "All :${temp.value.toString()} ")
+        productList.observeForever {
             productListUnsold.value = it.filter { prod ->
-                prod.soldStatus == "0"
+                prod.soldStatus == "0" //unsold
             } as ArrayList
         }
-        temp = productList
-        temp.observeForever {
-            productListSold.value = it.filter { prod ->
+        productList.observeForever {
+            productListSigned.value = it.filter { prod ->
                 prod.signStatus == "0" //signed
             } as ArrayList
-            Log.e("TAG", "list sold : ${temp.value!![3].signStatus}")
         }
-        temp = productList
-        temp.observeForever {
-            Log.e("TAG", "333 All :${temp.value.toString()} ")
+        productList.observeForever {
             productListUnSigned.value = it.filter { prod ->
                 prod.signStatus == "1" //unsigned
+                        && prod.soldStatus == "1"// sold
             } as ArrayList
         }
+        loadFunc()
+    }
+
+    fun loadFunc() {
+        productList.value = ArrayList()
         viewModelScope.launch {
             productList.value = repositoryImpl.getProductNumberList()
         }
@@ -65,9 +63,9 @@ class RetailerViewModel @Inject constructor(
 
     fun clickOnUnsigned(pos: Int, data: ProductDetailsData) {
         val rem = productListUnSigned.value!!.removeAt(pos)
-        productListSold.value!!.add(rem)
+        productListSigned.value!!.add(rem)
         productListUnSigned.value = productListUnSigned.value
-        productListSold.value = productListSold.value
+        productListSigned.value = productListSigned.value
         viewModelScope.launch {
             repositoryImpl.signTheUnsignedProduct(data)
         }

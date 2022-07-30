@@ -30,7 +30,8 @@ class MainRetailerRcvAdapter(
     override fun onBindViewHolder(holder: RetailerViewHolder, position: Int) {
         holder.binding.ProductName.text = productList[position].prodDisplayName
         holder.binding.ProductSummary.text = productList[position].manufacturer
-        holder.binding.ProductPrice.text = productList[position].price
+        holder.binding.ProductPrice.text =
+            StringBuilder().append("\u20B9").append(" " + productList[position].price)
         if (type == 1)
             holder.binding.specialBtn.visibility = View.INVISIBLE
         else if (type == 2) {
@@ -50,7 +51,7 @@ class MainRetailerRcvAdapter(
         }
 
         holder.binding.specialBtn.setOnClickListener {
-            clickInterface.onclick(position, productList[position - 1], type)
+            clickInterface.onclick(position, productList[position], type)
         }
     }
 

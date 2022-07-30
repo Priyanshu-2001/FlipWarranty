@@ -33,7 +33,12 @@ interface GetSerialNumberListApi {
     suspend fun getSignStatus(
         @Path("productSerialNum") SerialNum: String,
         @Header("Authorization") token: String
-    ): Response<SellinProductToBuyerData>
+    ): Response<WarrantyStatusResponseData>
+
+    @GET("/getOwnedItemsByUser")
+    suspend fun getOrderHistoryApi(
+        @Header("Authorization") token: String
+    ): Response<orderHistoryResponseData>
 
 
 }

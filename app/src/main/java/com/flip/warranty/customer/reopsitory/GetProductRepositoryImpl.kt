@@ -14,10 +14,9 @@ class GetProductRepositoryImpl(
     val token = "Bearer " + sharedPreferences.getString("token", " ")!!
 
     override suspend fun getProductNumberList(): ArrayList<ProductDetailsData> {
-        val response =
-            api.getSerialNumberListApi(token)
+        val response = api.getSerialNumberListApi(token)
         val list = ArrayList<ProductDetailsData>()
-        Log.e(TAG, "getProductNumberList: ${response.body().toString()}")
+        Log.e(TAG, "getProductNumberList serial response : ${response.body().toString()}")
         if (response.isSuccessful) {
             response.body()?.product_list?.forEach {
                 val serialNumber = it
@@ -71,6 +70,42 @@ class GetProductRepositoryImpl(
             }
         }
 
+    }
+
+    override suspend fun getOrderHistoryProductList(): ArrayList<ProductDetailsData> {
+        val response = api.getOrderHistoryApi(token)
+        val list = ArrayList<ProductDetailsData>()
+        if (response.isSuccessful) {
+            response.body()?.owned_products?.forEach {
+                val serialNumber = it
+                val res = api.getProductDetails(
+                    serialNumber,
+                    token
+                )
+                if (res.isSuccessful) {
+                    val soldRes = api.getProductSoldStatus(
+                        serialNumber,
+                        token
+                    )
+                    if (soldRes.isSuccessful) {
+                        val item = res.body()!!
+                        item.soldStatus = soldRes.body()?.soldStatus ?: "0"
+                        item.serialNUmber = serialNumber
+                        list.add(
+                            item
+                        )
+                    } else {
+                        Log.e(TAG, "getProductNumberList: ${soldRes.raw()}")
+                    }
+                } else {
+                    res.headers()
+                    res.message()
+                }
+            }
+        } else {
+            Log.e(TAG, "getOrderHistoryProductList: failed to get history")
+        }
+        return list
     }
 
 }

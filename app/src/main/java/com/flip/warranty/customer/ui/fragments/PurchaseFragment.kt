@@ -32,7 +32,7 @@ class PurchaseFragment : Fragment(R.layout.fragment_purchase), BuyNowClickInterf
 
     private fun showProducts() {
         viewModel.productListUnsold.observeForever {
-            binding.buyNowRCV.adapter = BuyNowAdapter(it, this)
+            binding.buyNowRCV.adapter = BuyNowAdapter(it, this, false)
             binding.progressBar.visibility = View.GONE
             Log.e(TAG, "showProducts: " + it.size)
         }

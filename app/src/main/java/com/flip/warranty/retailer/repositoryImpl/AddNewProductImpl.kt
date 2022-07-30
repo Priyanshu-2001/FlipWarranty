@@ -54,11 +54,11 @@ class AddNewProductImpl(
         val list = ArrayList<ProductDetailsData>()
         if (response.isSuccessful) {
             response.body()?.product_list?.forEach {
-                val res = serialNumberApi.getProductDetails(
+                val productDetails = serialNumberApi.getProductDetails(
                     it,
                     token
                 )
-                if (res.isSuccessful) {
+                if (productDetails.isSuccessful) {
                     val soldRes = serialNumberApi.getProductSoldStatus(
                         it,
                         token
@@ -68,24 +68,39 @@ class AddNewProductImpl(
                         token
                     )
                     if (soldRes.isSuccessful) {
-                        val item = res.body()!!
-                        item.soldStatus = soldRes.body()?.soldStatus ?: "0"
-                        item.serialNUmber = it
-                    } else {
-                        Log.e(TAG, "errro getProductNumberList: ${soldRes.raw()}")
-                    }
-                    if (signRes.isSuccessful) {
-                        val item = res.body()!!
-                        item.signStatus = signRes.body()?.status ?: "0"
-                        list.add(
-                            item
-                        )
+                        productDetails.body()!!.soldStatus = soldRes.body()?.soldStatus ?: "0"
+                        productDetails.body()!!.serialNUmber = it
                     } else {
                         Log.e(TAG, "error getProductNumberList: ${soldRes.raw()}")
                     }
+                    if (signRes.isSuccessful) {
+                        println()
+                        Log.e(
+                            TAG,
+                            "getProductNumberList: signed res = " + signRes.body()?.WarrantyStatus.toString()
+                        )
+                        Log.e(
+                            TAG,
+                            "getProductNumberList: sold res = " + productDetails.body()!!.soldStatus
+                        )
+                        Log.e(
+                            TAG,
+                            "getProductNumberList: name res = " + productDetails.body()!!.prodDisplayName
+                        )
+                        Log.e(
+                            TAG,
+                            "getProductNumberList: name res = " + productDetails.body()!!.manufacturer
+                        )
+                        productDetails.body()!!.signStatus = signRes.body()?.WarrantyStatus ?: "0"
+                    } else {
+                        Log.e(TAG, "error getProductNumberList:signed res  ${signRes.raw()}")
+                    }
+                    list.add(
+                        productDetails.body()!!
+                    )
                 } else {
-                    res.headers()
-                    res.message()
+                    productDetails.headers()
+                    productDetails.message()
                 }
             }
         }
