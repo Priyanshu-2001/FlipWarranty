@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.flip.warranty.R
 import com.flip.warranty.customer.viewModel.WarrantyDetailsViewModel
 import com.flip.warranty.databinding.ActivityWarrantyInfoBinding
@@ -51,6 +52,14 @@ class WarrantyInfoActivity : AppCompatActivity() {
                 binding.warrantyCard.remark.text = it.warranty_terms_and_conditions
                 binding.warrantyCard.priceProgressBar.visibility = View.GONE
                 animateAll()
+            }
+            viewModel.productDetails.observe(this) {
+                binding.ProductNameTV.text = it.prodDisplayName
+                binding.ProductSummary.text = it.manufacturer
+                binding.ProductPrice.text = StringBuilder().append("\u20B9").append(" " + it.price)
+                Glide.with(this)
+                    .load(it.image)
+                    .into(binding.productImage)
             }
         } catch (E: Exception) {
             E.printStackTrace()

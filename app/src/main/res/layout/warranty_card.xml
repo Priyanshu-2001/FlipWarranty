@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline6">
 
         <ImageView
-            android:id="@+id/productImage"
+            android:id="@+id/warrantyBadge"
             android:layout_width="75dp"
             android:layout_height="100dp"
             android:layout_marginVertical="20dp"
@@ -38,7 +38,7 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/productImage"
+            app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:gravity="center"
             android:text="From :"
             android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/productImage"
+            app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
             app:layout_constraintTop_toBottomOf="@+id/ProductName" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:gravity="center"
             android:text="Till :"
             android:textColor="@color/ic_launcher_background"
-            app:layout_constraintStart_toEndOf="@+id/productImage"
+            app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
             app:layout_constraintTop_toBottomOf="@+id/startTV" />
 
         <TextView
@@ -87,7 +87,7 @@
             android:text="Remark :"
             android:textColor="@color/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/productImage"
+            app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
             app:layout_constraintTop_toBottomOf="@+id/EndDateTV" />
 
         <TextView
@@ -122,7 +122,7 @@
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/productImage"
+            app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
             app:layout_constraintTop_toBottomOf="@+id/ProductName" />
 
         <androidx.constraintlayout.widget.Guideline

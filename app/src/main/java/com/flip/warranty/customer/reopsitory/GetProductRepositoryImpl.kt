@@ -73,6 +73,21 @@ class GetProductRepositoryImpl(
 
     }
 
+    override suspend fun getSingleProductDetail(serialNumber: String): ProductDetailsData {
+        val res = api.getProductDetails(
+            serialNumber,
+            token
+        )
+        if (res.isSuccessful) {
+            res.body()!!.serialNUmber = serialNumber
+            return res.body()!!
+        } else {
+            res.headers()
+            res.message()
+        }
+        return res.body()!!
+    }
+
     override suspend fun getOrderHistoryProductList(): ArrayList<ProductDetailsData> {
         val response = api.getOrderHistoryApi(token)
         val list = ArrayList<ProductDetailsData>()
@@ -109,5 +124,6 @@ class GetProductRepositoryImpl(
         }
         return list
     }
+
 
 }
