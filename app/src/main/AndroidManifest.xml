@@ -19,6 +19,15 @@
         <activity
             android:name=".login.LoginPage"
             android:exported="true">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".customer.ui.CustomerDashboard"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,19 +35,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".customer.ui.CustomerDashboard"
-            android:exported="true" />
-        <activity
             android:name=".retailer.ui.RetailerDashboard"
             android:exported="false" />
 
         <activity
             android:name=".customer.ui.WarrantyInfoActivity"
-            android:exported="false"
-            android:parentActivityName=".customer.GetWarranty" />
-        <activity
-            android:name=".customer.GetWarranty"
-            android:exported="true" />
+            android:exported="false" />
+
         <activity
             android:name=".customer.uitility.CaptureAct"
             android:screenOrientation="portrait"
