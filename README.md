@@ -3,6 +3,8 @@
 this is an android app as UI for ethereum based blockchain warranty system for selling and buying of goods 
 
 Please run Backend as Local Server before running the app and change the Endpoint of api(in Globals Package android) with IP address of machine running the Local Server.
+
+
 blockchain Backend :- https://github.com/YuvrajMann/Grid-Blockchain-Backend
 
 ScreenShots of Android Application
