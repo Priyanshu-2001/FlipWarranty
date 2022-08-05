@@ -17,7 +17,7 @@ interface AddNewProductApi {
         @Header("Authorization") token: String
     ): Response<NewProductDataModel>
 
-    @POST("/signWarranty")
+    @POST(Globals.SignWarrantyForProduct)
     suspend fun signNewProductApi(
         @Body data: SignTheNewProduct,
         @Header("Authorization") token: String

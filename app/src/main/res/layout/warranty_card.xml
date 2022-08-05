@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/grey"
@@ -26,7 +27,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/warranty_certificate"
-            app:tint="#FDD835" />
+            app:tint="#FDD835"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/ProductName"
@@ -49,7 +51,7 @@
             android:layout_marginTop="20dp"
             android:alpha="0"
             android:gravity="center"
-            android:text="From :"
+            android:text="@string/from"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
             app:layout_constraintTop_toBottomOf="@+id/ProductName" />
@@ -72,7 +74,7 @@
             android:layout_marginStart="10dp"
             android:alpha="0"
             android:gravity="center"
-            android:text="Till :"
+            android:text="@string/till"
             android:textColor="@color/ic_launcher_background"
             app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
             app:layout_constraintTop_toBottomOf="@+id/startTV" />
@@ -84,7 +86,7 @@
             android:layout_marginStart="10dp"
             android:alpha="0"
             android:gravity="center"
-            android:text="Remark :"
+            android:text="@string/remark"
             android:textColor="@color/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/warrantyBadge"
@@ -96,7 +98,7 @@
             android:layout_height="wrap_content"
             android:alpha="0"
             android:gravity="center"
-            android:text="hello world"
+            android:text="@string/hello_world"
             android:textColor="@color/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="@+id/EndDateTV"
             app:layout_constraintStart_toStartOf="@+id/guideline6"
@@ -108,7 +110,7 @@
             android:layout_height="wrap_content"
             android:alpha="0"
             android:gravity="start"
-            android:text="hello world"
+            android:text="@string/hello_world"
             android:textColor="@color/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline6"

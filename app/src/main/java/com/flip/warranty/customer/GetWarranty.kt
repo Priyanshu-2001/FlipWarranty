@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import com.flip.warranty.R
 import com.flip.warranty.customer.ui.WarrantyInfoActivity
 import com.flip.warranty.customer.uitility.CaptureAct
-import com.flip.warranty.databinding.GetWarrantyBinding
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -16,11 +15,11 @@ import com.journeyapps.barcodescanner.ScanOptions
 
 class GetWarranty : AppCompatActivity() {
 
-    lateinit var binding: GetWarrantyBinding
+    lateinit var binding: com.flip.warranty.databinding.GetWarrantyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.get_warranty)
-        binding.scanQRbtn.setOnClickListener {
+        binding.scanQrBtn.setOnClickListener {
             scanFunction()
         }
         binding.searchWithSerialNumber.setOnClickListener {

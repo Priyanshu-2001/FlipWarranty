@@ -1,18 +1,21 @@
 package com.flip.warranty.utility
 
 object Globals {
-    //    const val EndPoint = "http://localhost:8082"
-    const val EndPoint = "http://192.168.1.157:8082"
-//    const val EndPoint = "http://192.168.29.68:8082"
-//    const val EndPoint = "http://192.168.43.82:8082"
+    private const val LocalServerIpAddress = "192.168.1.157"
+    const val EndPoint = "http://$LocalServerIpAddress:8082"
 
-    const val SignUP = "/signup"
+
+    const val SignUP = "/signup" // yet to be implemented
     const val Login = "/login"
     const val CreateNewItem = "/createNewItem"
     const val GetProductBySerialNumber = "/getProduct/"
+    const val GetSerialNumberList = "/getSerialNumberList"
     const val SignWarrantyForProduct = "/signWarranty"
     const val SellProduct = "/sellProduct"
     const val GetProductWarranty = "/getWarranty/"
+    const val GetProductWarrantyStatus = "/getWarrantyStatus/"
+    const val GetSoldStatus = "/getSoldStaus/"
+    const val GetOwnedProductList = "/getOwnedItemsByUser"
 
-    const val TAG = "Get Your Shit Together"
+    const val TAG = "Here is your Error --> "
 }

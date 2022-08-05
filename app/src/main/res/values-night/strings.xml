@@ -2,4 +2,6 @@
 <resources>
     <string name="warranty_check">Warranty Check</string>
     <string name="buy_now">Buy Now</string>
+    <string name="listed_items">Listed Items</string>
+    <string name="un_signed_items">Un-Signed Items</string>
 </resources>

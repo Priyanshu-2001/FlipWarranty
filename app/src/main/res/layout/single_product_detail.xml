@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:paddingStart="15dp"
         android:paddingTop="15dp"
-        android:paddingRight="5dp"
+        android:paddingEnd="5dp"
         android:paddingBottom="15dp">
 
         <ImageView
@@ -29,13 +29,14 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/ProductName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product Name"
+            tools:text="Product Name"
             android:fontFamily="@font/carter_one"
             android:textSize="18sp"
             android:textColor="@color/white"
@@ -76,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:background="@drawable/premium_btn"
-            android:text="Buy Now"
+            android:text="@string/Buy_now"
             android:textColor="@color/lightBabyPink"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:background="@null"
-            android:text="Delete"
+            android:text="@string/delete"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

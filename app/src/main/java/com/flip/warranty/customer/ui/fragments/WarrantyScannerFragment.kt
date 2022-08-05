@@ -29,11 +29,11 @@ class WarrantyScannerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentWarrantyScannerBinding.bind(view)
-        binding.scanQRbtn.background =
+        binding.scanQrBtn.background =
             ResourcesCompat.getDrawable(resources, R.drawable.premium_btn, null)
         binding.searchWithSerialNumber.background =
             ResourcesCompat.getDrawable(resources, R.drawable.premium_btn, null)
-        binding.scanQRbtn.setOnClickListener {
+        binding.scanQrBtn.setOnClickListener {
             scanFunction()
         }
         binding.searchWithSerialNumber.setOnClickListener {
